@@ -15,14 +15,16 @@ class Album: InformationProtocol {
     var genres: [String]? = nil
     var releaseDate: String = ""
     var copyright: String? = ""
+    var itunesLink: URL? = nil
     
     public init(information: [String: Any]) {
-        self.albumName = information["name"] as? String ?? ""
-        self.artistName = information["artistName"] as? String ?? ""
-        self.copyright = information["copyright"] as? String ?? ""
-        self.genres = Album.getGenres(information["genres"] as? [[String : String]])
-        self.releaseDate = information["releaseDate"] as? String ?? ""
-        self.imageUrl = Album.getImageURL(information["artworkUrl100"] as? String)
+        self.albumName = information[Constants.name] as? String ?? ""
+        self.artistName = information[Constants.artistName] as? String ?? ""
+        self.copyright = information[Constants.copyright] as? String ?? ""
+        self.genres = Album.getGenres(information[Constants.genres] as? [[String : String]])
+        self.releaseDate = information[Constants.releaseDate] as? String ?? ""
+        self.imageUrl = Album.getURL(information[Constants.artworkUrl] as? String)
+        self.itunesLink = Album.getURL(information[Constants.url] as? String)
     }
 }
 
@@ -35,7 +37,7 @@ internal extension Album {
         }
         
         for genre in genres {
-            guard let genreName = genre["name"] as? String else {
+            guard let genreName = genre[Constants.name] as? String else {
                 return nil
             }
             arrayOfGenres.append(genreName)
@@ -43,7 +45,7 @@ internal extension Album {
         return arrayOfGenres
     }
     
-    class func getImageURL(_ url: String?) -> URL? {
+    class func getURL(_ url: String?) -> URL? {
         guard let urlString = url else {
             return nil
         }

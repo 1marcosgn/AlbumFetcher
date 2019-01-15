@@ -23,7 +23,6 @@ class AlbumsFactory {
      */
     public func makeAlbums(albums: [[String: Any]]?) -> [Album]? {
         var albumsArray = [Album]()
-        
         guard let albums_ = albums else {
             return nil
         }
@@ -32,7 +31,6 @@ class AlbumsFactory {
             let albumObject = Album.init(information: album)
             albumsArray.append(albumObject)
         }
-        
         return albumsArray
     }
 }
