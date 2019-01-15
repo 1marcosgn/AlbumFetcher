@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7FA5421221ED73C600A2A2D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5421121ED73C600A2A2D9 /* AppDelegate.swift */; };
 		7FA5421921ED73C700A2A2D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5421821ED73C700A2A2D9 /* Assets.xcassets */; };
-		7FA5421C21ED73C700A2A2D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5421A21ED73C700A2A2D9 /* LaunchScreen.storyboard */; };
 		7FA5423321ED755800A2A2D9 /* InformationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5423221ED755800A2A2D9 /* InformationProtocol.swift */; };
 		7FA5423421ED755800A2A2D9 /* InformationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5423221ED755800A2A2D9 /* InformationProtocol.swift */; };
 		7FA5423621ED774900A2A2D9 /* InformationProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5423521ED774900A2A2D9 /* InformationProtocolTests.swift */; };
@@ -46,7 +45,6 @@
 		7FA5420E21ED73C600A2A2D9 /* AlbumFetcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlbumFetcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA5421121ED73C600A2A2D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FA5421821ED73C700A2A2D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7FA5421B21ED73C700A2A2D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7FA5421D21ED73C700A2A2D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FA5422221ED73C700A2A2D9 /* AlbumFetcherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbumFetcherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA5422821ED73C700A2A2D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 				7FA5423121ED74CC00A2A2D9 /* Protocols */,
 				7FA5421121ED73C600A2A2D9 /* AppDelegate.swift */,
 				7FA5421821ED73C700A2A2D9 /* Assets.xcassets */,
-				7FA5421A21ED73C700A2A2D9 /* LaunchScreen.storyboard */,
 				7FA5421D21ED73C700A2A2D9 /* Info.plist */,
 			);
 			path = AlbumFetcher;
@@ -272,7 +269,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FA5421C21ED73C700A2A2D9 /* LaunchScreen.storyboard in Resources */,
 				7FA5421921ED73C700A2A2D9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,17 +327,6 @@
 			targetProxy = 7FA5422321ED73C700A2A2D9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		7FA5421A21ED73C700A2A2D9 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7FA5421B21ED73C700A2A2D9 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7FA5422921ED73C700A2A2D9 /* Debug */ = {
