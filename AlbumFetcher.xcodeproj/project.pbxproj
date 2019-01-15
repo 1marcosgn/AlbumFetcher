@@ -12,7 +12,9 @@
 		7FA5421721ED73C600A2A2D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5421521ED73C600A2A2D9 /* Main.storyboard */; };
 		7FA5421921ED73C700A2A2D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5421821ED73C700A2A2D9 /* Assets.xcassets */; };
 		7FA5421C21ED73C700A2A2D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FA5421A21ED73C700A2A2D9 /* LaunchScreen.storyboard */; };
-		7FA5422721ED73C700A2A2D9 /* AlbumFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5422621ED73C700A2A2D9 /* AlbumFetcherTests.swift */; };
+		7FA5423321ED755800A2A2D9 /* InformationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5423221ED755800A2A2D9 /* InformationProtocol.swift */; };
+		7FA5423421ED755800A2A2D9 /* InformationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5423221ED755800A2A2D9 /* InformationProtocol.swift */; };
+		7FA5423621ED774900A2A2D9 /* InformationProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA5423521ED774900A2A2D9 /* InformationProtocolTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,8 +36,9 @@
 		7FA5421B21ED73C700A2A2D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7FA5421D21ED73C700A2A2D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FA5422221ED73C700A2A2D9 /* AlbumFetcherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbumFetcherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FA5422621ED73C700A2A2D9 /* AlbumFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumFetcherTests.swift; sourceTree = "<group>"; };
 		7FA5422821ED73C700A2A2D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FA5423221ED755800A2A2D9 /* InformationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationProtocol.swift; sourceTree = "<group>"; };
+		7FA5423521ED774900A2A2D9 /* InformationProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationProtocolTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,8 @@
 		7FA5421021ED73C600A2A2D9 /* AlbumFetcher */ = {
 			isa = PBXGroup;
 			children = (
+				7FA5423721ED7DA100A2A2D9 /* Models */,
+				7FA5423121ED74CC00A2A2D9 /* Protocols */,
 				7FA5421121ED73C600A2A2D9 /* AppDelegate.swift */,
 				7FA5421321ED73C600A2A2D9 /* ViewController.swift */,
 				7FA5421521ED73C600A2A2D9 /* Main.storyboard */,
@@ -90,10 +95,25 @@
 		7FA5422521ED73C700A2A2D9 /* AlbumFetcherTests */ = {
 			isa = PBXGroup;
 			children = (
-				7FA5422621ED73C700A2A2D9 /* AlbumFetcherTests.swift */,
 				7FA5422821ED73C700A2A2D9 /* Info.plist */,
+				7FA5423521ED774900A2A2D9 /* InformationProtocolTests.swift */,
 			);
 			path = AlbumFetcherTests;
+			sourceTree = "<group>";
+		};
+		7FA5423121ED74CC00A2A2D9 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7FA5423221ED755800A2A2D9 /* InformationProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7FA5423721ED7DA100A2A2D9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FA5423321ED755800A2A2D9 /* InformationProtocol.swift in Sources */,
 				7FA5421421ED73C600A2A2D9 /* ViewController.swift in Sources */,
 				7FA5421221ED73C600A2A2D9 /* AppDelegate.swift in Sources */,
 			);
@@ -206,7 +227,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FA5422721ED73C700A2A2D9 /* AlbumFetcherTests.swift in Sources */,
+				7FA5423621ED774900A2A2D9 /* InformationProtocolTests.swift in Sources */,
+				7FA5423421ED755800A2A2D9 /* InformationProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
