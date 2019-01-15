@@ -9,7 +9,6 @@
 import UIKit
 
 class AlbumsFactory {
-    
     private static var sharedAlbumsFactory = AlbumsFactory()
     
     /// Single instance of Albums Factory
@@ -36,5 +35,4 @@ class AlbumsFactory {
         
         return albumsArray
     }
-
 }

@@ -10,7 +10,7 @@ import XCTest
 
 class InteractorTests: XCTestCase {
     
-    func test_requestAlbums_Should_Load_AvailableChallenges() {
+    func test_requestAlbums_Should_Load_AvailableAlbums() {
         /// Given
         let sut = Interactor.init()
         let expectation = XCTestExpectation(description: "Call should be successfully completed")

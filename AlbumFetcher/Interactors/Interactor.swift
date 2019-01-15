@@ -9,7 +9,6 @@
 import UIKit
 
 class Interactor {
-    
     /// Property to manage the available albums
     public var availableAlbums: [Album]?
     
