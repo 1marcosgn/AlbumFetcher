@@ -22,10 +22,14 @@ class AlbumsFactory {
      - parameter albums: Array of Dictionaries with information required to build an Album
      - returns: Array of Albums
      */
-    public func makeAlbums(albums: [[String: Any]]) -> [Album]? {
+    public func makeAlbums(albums: [[String: Any]]?) -> [Album]? {
         var albumsArray = [Album]()
         
-        for album in albums {
+        guard let albums_ = albums else {
+            return nil
+        }
+        
+        for album in albums_ {
             let albumObject = Album.init(information: album)
             albumsArray.append(albumObject)
         }
