@@ -25,7 +25,7 @@ class InformationProtocolTests: XCTestCase {
     
         XCTAssertNotNil(sut.artistName, "Artist name shoyld not be nil")
         XCTAssertEqual(sut.artistName, "Future", "Artist name should match")
-        
+        XCTAssertNotNil(sut.releaseDate, "Release Date should not be nil")
         XCTAssertNotNil(sut.imageUrl, "Image Url should not be nil")
         XCTAssertNotNil(sut.genres, "Array of genres should not be nil")
         XCTAssertEqual(sut.genres?.count, 1,"Number of Genres for this album should match")
