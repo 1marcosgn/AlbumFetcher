@@ -50,10 +50,10 @@ internal extension ServicesImplementer {
                         guard
                             let data = data,
                             let json = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
-                            let feed = json["feed"] as? [String: Any],
-                            let results = feed["results"] as? [[String: Any]]
+                            let feed = json[Constants.feed] as? [String: Any],
+                            let results = feed[Constants.results] as? [[String: Any]]
                             else {
-                                print("error:", error ?? "nil")
+                                print(Constants.error, error ?? "")
                                 return
                         }
                         self.setUpAlbumsArrayWith(results)

@@ -27,4 +27,7 @@ public protocol InformationProtocol {
     
     // Album copy right, this is optional since the album could be considered in the public domain after certain time
     var copyright: String? { get set }
+    
+    // The link to open iTunes
+    var itunesLink: URL? { get set}
 }

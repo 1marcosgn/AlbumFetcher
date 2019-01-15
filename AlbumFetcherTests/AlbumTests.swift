@@ -51,7 +51,7 @@ class AlbumTests: XCTestCase {
         let mockUrlString = "https://is3-ssl.mzstatic.com/image/thumb/Music114/v4/ae/40/d6/ae40d6e3-cce3-a662-84da-0a2f8582f8ae/886447486191.jpg/200x200bb.png"
         
         /// When
-        let sut = Album.getImageURL(mockUrlString)
+        let sut = Album.getURL(mockUrlString)
         
         /// Then
         XCTAssertNotNil(sut, "Url should not be nil")
