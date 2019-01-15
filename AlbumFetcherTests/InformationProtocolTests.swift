@@ -15,7 +15,7 @@ class InformationProtocolTests: XCTestCase {
         let mockImageURL = URL(string: "https://is3-ssl.mzstatic.com/image/thumb/Music114/v4/ae/40/d6/ae40d6e3-cce3-a662-84da-0a2f8582f8ae/886447486191.jpg/200x200bb.png")
         
         /// When
-        let sut = MockAlbum(albumName: "Future Hndrxx Presents: The WIZRD", artistName: "Future", imageUrl: mockImageURL, genres: ["Hip-Hop/Rap"], releaseDate: Date(), copyright: "℗ 2019 Epic Records, a division of Sony Music Entertainment. With Freebandz.")
+        let sut = MockAlbum(albumName: "Future Hndrxx Presents: The WIZRD", artistName: "Future", imageUrl: mockImageURL, genres: ["Hip-Hop/Rap"], releaseDate: "2019-01-18", copyright: "℗ 2019 Epic Records, a division of Sony Music Entertainment. With Freebandz.")
         
         /// Then
         XCTAssertNotNil(sut, "Intialized Album that conforms 'InformationProtocol' should not be nil")
@@ -38,7 +38,7 @@ class InformationProtocolTests: XCTestCase {
         let mockArtistName = "Future"
         
         /// When
-        let sut = MockAlbum(albumName: mockAlbumName, artistName: mockArtistName, imageUrl: nil, genres: nil, releaseDate: Date(), copyright: nil)
+        let sut = MockAlbum(albumName: mockAlbumName, artistName: mockArtistName, imageUrl: nil, genres: nil, releaseDate: "2019-01-18", copyright: nil)
         
         /// Then
         XCTAssertNil(sut.imageUrl, "Image Url should be nil when information is not provided")
@@ -54,10 +54,10 @@ class MockAlbum: InformationProtocol {
     var artistName: String
     var imageUrl: URL?
     var genres: [String]?
-    var releaseDate: Date
+    var releaseDate: String
     var copyright: String?
     
-    init(albumName: String, artistName: String, imageUrl: URL?, genres: [String]?, releaseDate: Date, copyright: String?) {
+    init(albumName: String, artistName: String, imageUrl: URL?, genres: [String]?, releaseDate: String, copyright: String?) {
         self.albumName = albumName
         self.artistName = artistName
         self.imageUrl = imageUrl

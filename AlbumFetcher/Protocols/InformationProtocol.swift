@@ -23,7 +23,7 @@ public protocol InformationProtocol {
     var genres: [String]? { get set }
     
     // The release date of the album
-    var releaseDate: Date { get set }
+    var releaseDate: String { get set }
     
     // Album copy right, this is optional since the album could be considered in the public domain after certain time
     var copyright: String? { get set }
