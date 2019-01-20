@@ -9,22 +9,35 @@
 import UIKit
 
 class Album: InformationProtocol {
-    var albumName: String = ""
-    var artistName: String = ""
-    var imageUrl: URL? = nil
-    var genres: [String]? = nil
-    var releaseDate: String = ""
-    var copyright: String? = ""
-    var itunesLink: URL? = nil
+    var albumName: String
+    var artistName: String
+    var imageUrl: URL?
+    var genres: [String]?
+    var releaseDate: String
+    var copyright: String?
+    var itunesLink: URL?
     
-    public init(information: [String: Any]) {
-        self.albumName = information[Constants.name] as? String ?? ""
-        self.artistName = information[Constants.artistName] as? String ?? ""
-        self.copyright = information[Constants.copyright] as? String ?? ""
-        self.genres = Album.getGenres(information[Constants.genres] as? [[String : String]])
-        self.releaseDate = information[Constants.releaseDate] as? String ?? ""
-        self.imageUrl = Album.getURL(information[Constants.artworkUrl] as? String)
-        self.itunesLink = Album.getURL(information[Constants.url] as? String)
+    /// Optional initializer to create Albums only when Data has the right Format
+    public init?(information: [String: Any]) {
+        /// Validation to get the right format for the Album properties
+        guard let albumName = information[Constants.name] as? String,
+            let artistName = information[Constants.artistName] as? String,
+                let copyright = information[Constants.copyright] as? String,
+                    let genres = Album.getGenres(information[Constants.genres] as? [[String : String]]),
+                        let releaseDate = information[Constants.releaseDate] as? String,
+                            let imageUrl = Album.getURL(information[Constants.artworkUrl] as? String),
+                                let itunesLink = Album.getURL(information[Constants.url] as? String) else {
+                                    return nil
+        }
+        
+        /// Valid data for properties
+        self.albumName = albumName
+        self.artistName = artistName
+        self.copyright = copyright
+        self.genres = genres
+        self.releaseDate = releaseDate
+        self.imageUrl = imageUrl
+        self.itunesLink = itunesLink
     }
 }
 

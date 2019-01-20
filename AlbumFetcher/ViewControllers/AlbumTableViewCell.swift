@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlbumTableViewCell: UITableViewCell {
+class AlbumTableViewCellController: UITableViewCell {
     let labelArtistName = UILabel()
     let labelAlbumName = UILabel()
     let imageAlbum = UIImageView()
@@ -25,13 +25,13 @@ class AlbumTableViewCell: UITableViewCell {
         labelAlbumName.backgroundColor = .white
         labelAlbumName.textColor = .black
         labelAlbumName.numberOfLines = 5
-        self.addSubview(labelAlbumName)
+        addSubview(labelAlbumName)
         setLabelAlbumNameConstraints()
     }
     
     func setUpImageAlbum() {
         imageAlbum.backgroundColor = .gray
-        self.addSubview(imageAlbum)
+        addSubview(imageAlbum)
         setImageAlbumNameConstraints()
     }
     
@@ -39,31 +39,40 @@ class AlbumTableViewCell: UITableViewCell {
         labelArtistName.backgroundColor = .white
         labelArtistName.textColor = .red
         labelArtistName.numberOfLines = 2
-        self.addSubview(labelArtistName)
+        addSubview(labelArtistName)
         setLabelArtistNameConstraints()
     }
     
     func setLabelAlbumNameConstraints() {
         labelAlbumName.translatesAutoresizingMaskIntoConstraints = false
-        labelAlbumName.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
-        labelAlbumName.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
-        labelAlbumName.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -140).isActive = true
-        labelAlbumName.bottomAnchor.constraint(equalTo: labelArtistName.topAnchor, constant: -5).isActive = true
+        
+        NSLayoutConstraint.activate([
+            labelAlbumName.topAnchor.constraint(equalTo: topAnchor, constant: LayoutConstants.topCell),
+            labelAlbumName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutConstants.leading),
+            labelAlbumName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -140),
+            labelAlbumName.bottomAnchor.constraint(equalTo: labelArtistName.topAnchor, constant: LayoutConstants.bottomCell)
+        ])
     }
     
     func setLabelArtistNameConstraints() {
         labelArtistName.translatesAutoresizingMaskIntoConstraints = false
-        labelArtistName.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
-        labelArtistName.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
-        labelArtistName.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        labelArtistName.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2).isActive = true
+        
+        NSLayoutConstraint.activate([
+            labelArtistName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutConstants.leading),
+            labelArtistName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: LayoutConstants.trailing),
+            labelArtistName.heightAnchor.constraint(equalToConstant: 35),
+            labelArtistName.bottomAnchor.constraint(equalTo: bottomAnchor, constant: LayoutConstants.bottomCell)
+        ])
     }
     
     func setImageAlbumNameConstraints() {
         imageAlbum.translatesAutoresizingMaskIntoConstraints = false
-        imageAlbum.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
-        imageAlbum.leadingAnchor.constraint(equalTo: labelAlbumName.trailingAnchor, constant: 5).isActive = true
-        imageAlbum.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
-        imageAlbum.bottomAnchor.constraint(equalTo: labelArtistName.topAnchor, constant: -5).isActive = true
+        
+        NSLayoutConstraint.activate([
+            imageAlbum.topAnchor.constraint(equalTo: topAnchor, constant: LayoutConstants.topCell),
+            imageAlbum.leadingAnchor.constraint(equalTo: labelAlbumName.trailingAnchor, constant: 5),
+            imageAlbum.trailingAnchor.constraint(equalTo: trailingAnchor, constant: LayoutConstants.trailing),
+            imageAlbum.bottomAnchor.constraint(equalTo: labelArtistName.topAnchor, constant: LayoutConstants.bottomCell)
+        ])
     }
 }

@@ -19,18 +19,18 @@ class AlbumTests: XCTestCase {
         
         // Then
         XCTAssertNotNil(sut, "Intialized Album that conforms 'InformationProtocol' should not be nil")
-        XCTAssertNotNil(sut.albumName, "Album name should not be nil")
-        XCTAssertNotNil(sut.artistName, "Artist name shoyld not be nil")
-        XCTAssertNotNil(sut.copyright, "Copy right should not be nil")
-        XCTAssertNotNil(sut.genres, "Array of genres should not be nil")
-        XCTAssertNotNil(sut.releaseDate, "Release Date should not be nil")
-        XCTAssertNotNil(sut.imageUrl, "Image Url should not be nil")
+        XCTAssertNotNil(sut?.albumName, "Album name should not be nil")
+        XCTAssertNotNil(sut?.artistName, "Artist name shoyld not be nil")
+        XCTAssertNotNil(sut?.copyright, "Copy right should not be nil")
+        XCTAssertNotNil(sut?.genres, "Array of genres should not be nil")
+        XCTAssertNotNil(sut?.releaseDate, "Release Date should not be nil")
+        XCTAssertNotNil(sut?.imageUrl, "Image Url should not be nil")
         
-        XCTAssertEqual(sut.albumName, "Future Hndrxx Presents: The WIZRD")
-        XCTAssertEqual(sut.artistName, "Future", "Artist name should match")
-        XCTAssertEqual(sut.copyright, "℗ 2019 Epic Records, a division of Sony Music Entertainment. With Freebandz.", "Copy right should match")
-        XCTAssertEqual(sut.genres?.count, 2,"Number of Genres for this album should match")
-        XCTAssertEqual(sut.releaseDate, "2019-01-18","Release date should match")
+        XCTAssertEqual(sut?.albumName, "Future Hndrxx Presents: The WIZRD")
+        XCTAssertEqual(sut?.artistName, "Future", "Artist name should match")
+        XCTAssertEqual(sut?.copyright, "℗ 2019 Epic Records, a division of Sony Music Entertainment. With Freebandz.", "Copy right should match")
+        XCTAssertEqual(sut?.genres?.count, 2,"Number of Genres for this album should match")
+        XCTAssertEqual(sut?.releaseDate, "2019-01-18","Release date should match")
     }
     
     func testGetGenres_WithValidInformation_ShouldReturnArrayOfGenres() {
@@ -77,6 +77,7 @@ extension AlbumTests {
         dictionary["genres"] = makeGenresArray()
         dictionary["releaseDate"] = "2019-01-18"
         dictionary["artworkUrl100"] = "https://is3-ssl.mzstatic.com/image/thumb/Music114/v4/ae/40/d6/ae40d6e3-cce3-a662-84da-0a2f8582f8ae/886447486191.jpg/200x200bb.png"
+        dictionary["url"] = "https://is3-ssl.mzstatic.com/image/thumb/Music114/v4/ae/40/d6/ae40d6e3-cce3-a662-84da-0a2f8582f8ae/886447486191.jpg/200x200bb.png"
         
         return dictionary
     }

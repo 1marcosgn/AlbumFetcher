@@ -41,9 +41,7 @@ internal extension ServicesImplementer {
             let session = URLSession(configuration: config)
             let request = NSURLRequest(url: endpointURL)
             
-            
-            let dataTask = session.dataTask(with: request as URLRequest) {
-                ( data, response, error) in
+            let dataTask = session.dataTask(with: request as URLRequest) { [unowned self] (data, response, error) in
                 if let httpResponse = response as? HTTPURLResponse {
                     switch(httpResponse.statusCode) {
                     case 200:

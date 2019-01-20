@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Constants: NSObject {
+struct Constants {
     static let albumCell = "albumCell"
     static let separator = ", "
     static let connectionError = "Connection Error"

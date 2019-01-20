@@ -15,7 +15,7 @@ class Interactor {
     /// Method that uses the Service Implementer to gather albums from an external API
     public func requestAlbums(completion: @escaping (Bool) -> ()) {
         let serviceImpl = ServicesImplementer.init()
-        serviceImpl.fetchAlbums { (success) in
+        serviceImpl.fetchAlbums { [unowned self] (success) in
             
             if success {
                 self.makeAlbumsWith(serviceImpl.albums)

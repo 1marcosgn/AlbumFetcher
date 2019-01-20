@@ -28,8 +28,9 @@ class AlbumsFactory {
         }
         
         for album in albums_ {
-            let albumObject = Album.init(information: album)
-            albumsArray.append(albumObject)
+            if let albumObject = Album.init(information: album) {
+                albumsArray.append(albumObject)
+            }
         }
         return albumsArray
     }
