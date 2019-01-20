@@ -11,7 +11,6 @@ import UIKit
 struct Constants {
     static let albumCell = "albumCell"
     static let separator = ", "
-    static let connectionError = "Connection Error"
     static let openInItunes = "Open in iTunes"
     static let error = "error:"
     static let feed = "feed"

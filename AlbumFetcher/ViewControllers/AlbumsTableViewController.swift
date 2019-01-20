@@ -23,9 +23,9 @@ class AlbumsTableViewController: UITableViewController {
 /// Extension to hanlde Interactor Operations
 extension AlbumsTableViewController {
     func setUpAlbums() {
-        interactor.requestAlbums { [unowned self] (success) in
+        interactor.requestAlbums { [unowned self] (success, albums, error) in
             if success {
-                guard let availableAlbums = self.interactor.availableAlbums else {
+                guard let availableAlbums = albums else {
                     return
                 }
                 self.albums = availableAlbums
@@ -33,11 +33,28 @@ extension AlbumsTableViewController {
                 DispatchQueue.main.async { [unowned self] in
                     self.tableView.reloadData()
                 }
-                
             } else {
-                print(Constants.connectionError)
+                self.displayAlertViewWith(error)
             }
         }
+    }
+    
+    func displayAlertViewWith(_ message: String?) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            switch action.style{
+            case .default:
+                print("default")
+                
+            case .cancel:
+                print("cancel")
+                
+            case .destructive:
+                print("destructive")
+                
+                
+            }}))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
