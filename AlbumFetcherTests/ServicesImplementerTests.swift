@@ -14,17 +14,19 @@ class ServicesImplementerTests: XCTestCase {
         /// Given
         let sut = ServicesImplementer.init()
         let expectation = XCTestExpectation(description: "Call should be successfully completed and albums updated")
+        var mockInfo: [[String: Any]]?
         
         /// When
-        sut.fetchAlbums{ (success) in
+        sut.fetchAlbums{ (success, information, error) in
             if success {
                 expectation.fulfill()
+                mockInfo = information
             }
         }
         
         /// Then
         wait(for: [expectation], timeout: 10.0)
-        XCTAssertNotNil(sut.albums, "After sync is completed this should not be nil")
+        XCTAssertNotNil(mockInfo, "After sync is completed this should not be nil")
     }
     
     func test_Albums_ShouldNOTExist_If_NO_FetchOperation_HasBeenExecuted() {
@@ -35,7 +37,7 @@ class ServicesImplementerTests: XCTestCase {
         sut = ServicesImplementer.init()
         
         /// Then
-        XCTAssertNil(sut?.albums, "Albums should be nil because no fetch operation has been executed")
+        XCTAssertNotNil(sut, "Interactor should not be nil")
     }
 
 }

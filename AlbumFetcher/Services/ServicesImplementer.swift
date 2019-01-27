@@ -15,7 +15,6 @@ private struct Services {
 
 public class ServicesImplementer {
    
-    
     /// Call Web Service to fetch data .. this is an async task
     public func fetchAlbums(completion: @escaping (Bool, [[String: Any]]?, String?) -> ()) {
         downloadFileFromURL { (success, results, error) -> Void in
