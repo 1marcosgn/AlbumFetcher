@@ -14,13 +14,11 @@ private struct Services {
 }
 
 public class ServicesImplementer {
-    /// Stores temporary the downloaded albums
-    public var albums: [[String: Any]]?
-    
+   
     /// Call Web Service to fetch data .. this is an async task
-    public func fetchAlbums(completion: @escaping (Bool) -> ()) {
-        downloadFileFromURL { (success) -> Void in
-            completion(success)
+    public func fetchAlbums(completion: @escaping (Bool, [[String: Any]]?, String?) -> ()) {
+        downloadFileFromURL { (success, results, error) -> Void in
+            completion(success, results, error)
         }
     }
 }
@@ -31,7 +29,7 @@ internal extension ServicesImplementer {
      Simple method to download a JSON from external URL
      - parameter completion: The response of the opetarion
      */
-    func downloadFileFromURL(completion: @escaping (Bool) -> ()) {
+    func downloadFileFromURL(completion: @escaping (Bool, [[String: Any]]?, String?) -> ()) {
         DispatchQueue.global().async {
             guard let endpointURL = URL(string: Services.find_albums) else {
                 return
@@ -41,9 +39,7 @@ internal extension ServicesImplementer {
             let session = URLSession(configuration: config)
             let request = NSURLRequest(url: endpointURL)
             
-            
-            let dataTask = session.dataTask(with: request as URLRequest) {
-                ( data, response, error) in
+            let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) in
                 if let httpResponse = response as? HTTPURLResponse {
                     switch(httpResponse.statusCode) {
                     case 200:
@@ -56,29 +52,20 @@ internal extension ServicesImplementer {
                                 print(Constants.error, error ?? "")
                                 return
                         }
-                        self.setUpAlbumsArrayWith(results)
-                        completion(true)
+                        //self.setUpAlbumsArrayWith(results)
+                        completion(true, results, nil)
                     default:
-                        print("GET request not successful HTTP status code: \(httpResponse.statusCode)")
-                        completion(false)
+                        let errorDescription = "GET request not successful HTTP status code: \(httpResponse.statusCode)"
+                        completion(false, nil, errorDescription)
                     }
                 } else {
-                    print("Error: Not a valid HTTP response")
-                    completion(false)
+                    let errorDescription = "Error: Not a valid HTTP response"
+                    completion(false, nil, errorDescription)
                 }
             }
             dataTask.resume()
         }
     }
     
-    /**
-     Updates the 'albums' dictionary with the content of the response
-     - parameter content: The external dictionary with valid content
-     */
-    func setUpAlbumsArrayWith(_ content: [[String: Any]]?) {
-        guard let theContent = content else {
-            return
-        }
-        albums = theContent
-    }
+   
 }

@@ -9,29 +9,25 @@
 import UIKit
 
 class Interactor {
-    /// Property to manage the available albums
-    public var availableAlbums: [Album]?
-    
     /// Method that uses the Service Implementer to gather albums from an external API
-    public func requestAlbums(completion: @escaping (Bool) -> ()) {
+    public func requestAlbums(completion: @escaping (Bool, [Album]?, String?) -> ()) {
         let serviceImpl = ServicesImplementer.init()
-        serviceImpl.fetchAlbums { (success) in
+        serviceImpl.fetchAlbums { [unowned self] (success, results, error) in
             
             if success {
-                self.makeAlbumsWith(serviceImpl.albums)
-                completion(true)
+                completion(true, self.makeAlbumsWith(results), nil)
             } else {
-                completion(false)
+                completion(false, nil, error)
             }
         }
     }
     
     /// Uses the Factory Class to create albums based on the response
-    public func makeAlbumsWith(_ content: [[String: Any]]?) {
+    public func makeAlbumsWith(_ content: [[String: Any]]?) -> [Album]? {
         guard let albums = AlbumsFactory.shared().makeAlbums(albums: content) else {
-            return
+            return nil
         }
         
-        availableAlbums = albums
+        return albums
     }
 }

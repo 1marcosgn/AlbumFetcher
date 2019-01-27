@@ -14,16 +14,18 @@ class InteractorTests: XCTestCase {
         /// Given
         let sut = Interactor.init()
         let expectation = XCTestExpectation(description: "Call should be successfully completed")
+        var mockInfo: [Album]?
         
         /// When
-        sut.requestAlbums { (success) in
+        sut.requestAlbums { (success, information, error) in
             if success {
                 expectation.fulfill()
+                mockInfo = information
             }
         }
         
         /// Then
         wait(for: [expectation], timeout: 10.0)
-        XCTAssertNotNil(sut.availableAlbums, "After fetching from API the available albums should not be nil")
+        XCTAssertNotNil(mockInfo, "After fetching from API the available albums should not be nil")
     }
 }

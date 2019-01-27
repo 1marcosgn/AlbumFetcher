@@ -23,9 +23,9 @@ class AlbumsTableViewController: UITableViewController {
 /// Extension to hanlde Interactor Operations
 extension AlbumsTableViewController {
     func setUpAlbums() {
-        interactor.requestAlbums { (success) in
+        interactor.requestAlbums { [unowned self] (success, albums, error) in
             if success {
-                guard let availableAlbums = self.interactor.availableAlbums else {
+                guard let availableAlbums = albums else {
                     return
                 }
                 self.albums = availableAlbums
@@ -33,11 +33,28 @@ extension AlbumsTableViewController {
                 DispatchQueue.main.async { [unowned self] in
                     self.tableView.reloadData()
                 }
-                
             } else {
-                print(Constants.connectionError)
+                self.displayAlertViewWith(error)
             }
         }
+    }
+    
+    func displayAlertViewWith(_ message: String?) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            switch action.style{
+            case .default:
+                print("default")
+                
+            case .cancel:
+                print("cancel")
+                
+            case .destructive:
+                print("destructive")
+                
+                
+            }}))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -45,7 +62,7 @@ extension AlbumsTableViewController {
 extension AlbumsTableViewController {
     
     func configureTableView() {
-        tableView.register(AlbumTableViewCell.self, forCellReuseIdentifier: Constants.albumCell)
+        tableView.register(AlbumTableViewCellController.self, forCellReuseIdentifier: Constants.albumCell)
         tableView.tableFooterView = UIView()
     }
     
@@ -58,7 +75,7 @@ extension AlbumsTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.albumCell, for: indexPath) as! AlbumTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.albumCell, for: indexPath) as! AlbumTableViewCellController
         cell.awakeFromNib()
         let album = albums[indexPath.row]
         cell.labelArtistName.text = album.artistName
@@ -82,27 +99,27 @@ extension AlbumsTableViewController {
         detailView.albumNameLabel.text = album.albumName
         detailView.imageAlbum.imageFromServerURL(urlString: album.imageUrl)
         detailView.itunesLink = album.itunesLink
-        self.navigationController?.pushViewController(detailView, animated: true)
+        navigationController?.pushViewController(detailView, animated: true)
     }
 }
 
 /// Extension to download the images
 extension UIImageView {
     public func imageFromServerURL(urlString: URL?) {
-        self.image = nil
+        image = nil
         
         guard let imageURL = urlString else {
             return
         }
         
-        URLSession.shared.dataTask(with: imageURL, completionHandler: { (data, response, error) -> Void in
+        URLSession.shared.dataTask(with: imageURL, completionHandler: { [weak self] (data, response, error) -> Void in
             if error != nil {
                 print(error.debugDescription)
                 return
             }
             DispatchQueue.main.async(execute: { () -> Void in
                 let image = UIImage(data: data!)
-                self.image = image
+                self?.image = image
             })
         }).resume()
     }
