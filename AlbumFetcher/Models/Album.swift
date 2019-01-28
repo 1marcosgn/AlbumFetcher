@@ -8,14 +8,14 @@
 
 import UIKit
 
-class Album: InformationProtocol {
-    var albumName: String
-    var artistName: String
-    var imageUrl: URL?
-    var genres: [String]?
-    var releaseDate: String
-    var copyright: String?
-    var itunesLink: URL?
+struct Album {
+    let albumName: String
+    let artistName: String
+    let imageUrl: URL?
+    let genres: [String]?
+    let releaseDate: String
+    let copyright: String?
+    let itunesLink: URL?
     
     /// Optional initializer to create Albums only when Data has the right Format
     public init?(information: [String: Any]) {
@@ -42,8 +42,7 @@ class Album: InformationProtocol {
 }
 
 internal extension Album {
-    
-    class func getGenres(_ genresInfo:[[String: Any]]?) -> [String]? {
+    static func getGenres(_ genresInfo:[[String: Any]]?) -> [String]? {
         var arrayOfGenres = [String]()
         guard let genres = genresInfo else {
             return nil
@@ -58,7 +57,7 @@ internal extension Album {
         return arrayOfGenres
     }
     
-    class func getURL(_ url: String?) -> URL? {
+    static func getURL(_ url: String?) -> URL? {
         guard let urlString = url else {
             return nil
         }
